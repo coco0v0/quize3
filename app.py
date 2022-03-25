@@ -7,6 +7,10 @@ app = Flask(__name__, static_url_path='/assets', static_folder='./assets')
 def hello_world():
     return open('index.html').read()
 
+@app.route('/<path:path>')
+def static_file(path):
+    return open(path, 'rb').read()
+
 @app.route('/asserts/<path:path>')
 def send_assets(path):
     print(f'asserts/{path}')
